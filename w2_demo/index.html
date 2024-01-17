@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="JMIGNACCA">
+    <meta name="description" content="Week 2 Demo">
+
+    <title>W2 | Demo :D</title>
+
+    <!--in document styling-->
+    <style>
+        /*in here we write CSS*/
+
+        /* Selecting elements in CSS & JS
+
+            selector {
+                property:value;
+            }
+
+            Ways to select:
+            *by ELEMENT type (all elements of types are styled)
+            *by ID name (only that element in styled)
+            *by CLASS name (only eelements in that class are styled)
+        */
+        /*by element*/
+        div{
+            /*all div emelemts will have the below styles*/
+            border:1px solid black;
+            margin:10px; /* adds space between border & other elements, all 4 slides*/
+            padding:10px; /* adds space between element content & border, all 4 slides*/
+        }
+
+        /*by id*/   
+
+        #header {
+            /*by id name*/
+            border: 3px solid blue;
+
+
+        }
+        /* by CLASS*/
+        .bg{
+            background-color: black;
+            color:white;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+    <!--WRAPPER - Wraps around all content-->
+    <div id="header">
+
+
+        <!--Header-->
+        <div id="wrapper" class="bg">
+            
+            <h1> Week 2 Demo</h1> <!--only 1 h1 per page - SEO-->
+            <h2>Attributs, <i>Links</i>, and Images</h2>
+            
+        </div>
+
+        <!--NAV BAR-->
+        <div id="nav">
+
+            <!--external links: links outside of our website-->
+            <a href="https://www.meca.edu" target="_blank">Visit MECA!</a>
+
+            <br>
+            
+            <!--internal links: likes to pages inside of our site(relative paths)-->
+            <a href="text.txt"target="_blank">Open my Text File</a>
+
+            <br>
+            <!--internal jump links: jumos to a section bases onb the #id in current page-->
+            <a href="#bio">BIO</a>
+            <a href="schools">SCHOOLS</a>
+            <a href="hobbies">HOBBIES</a>
+            
+            <br>
+
+        <!--BIO-->
+        <div id="bio">
+
+            <h2> My Bio - All about me</h2>
+
+            <p>Can a man still be <b>brave</b> if he’s afraid? That is the <i>only time</i> a man can be brave.A forked purple lightning bolt, on black field speckled with four-pointed stars. Winter is coming. You know nothing, Jon Snow. Pay the iron price. Unbowed, Unbent, Unbroken. It's <b><u>ten thousand miles</u></b> between Kings landing and the wall. It's ten thousand miles between Kings landing and the wall.</p> <!--word wrap on: alt+z-->
+            
+            
+
+        </div>
+
+        <!--SCHOOLS-->
+        <div id="schools">
+
+            <h2> My schooling</h2>
+
+            <!--ordered list-->
+            <ol>
+                <li> NEIT - MSIT - 2023</li>
+                <li> MECA - BFA, <i>Photography</i> -2??</li>
+                <li> USM - media studies electives</li>
+            </ol>
+            <!--IMAGES: require src and alt attributes-->
+
+            <!--ABSOLUTE PATHS: using images from other sites -- BAD-->
+            <img src="data:image/jpeg;base64,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" alt="Brad Marchand">
+            <br>
+            <!--RELATIVE PATHS: using images from current sites root foler-->
+            <img src="images/meca.jpg" alt="porteous building at sunset" width="500">
+        </div>
+
+        <!--HOBBIES-->
+        <div id="hobbies">
+            <h2> Things I like to DO</h2>
+            <!--unordered list-->
+            <ul>
+                <li>Hockey</li>
+                <li> Guitar</li>
+                <li>Gym</li>
+
+            </ul>
+            <img src="images/stormsEnd.jpg" alt="Storm's End Castle">
+
+        </div>
+        
+        <!--FOOTER-->
+        <div id="footer" class="bg" style="text-align: center">
+
+            <a href="#header">Back to TOP</a>
+            <p>&copy; J MIGNACCA |  SE111.02  | 202420</p>
+            
+            <!--include validation screenshot below-->
+
+            <img src="images/valid.png" alt=" Validation Screenshot" width="100%">
+
+        </div>
+
+    </div><!--/Wrapper-->
+
+
+</body>
+</html>
