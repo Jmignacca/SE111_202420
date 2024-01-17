@@ -15,7 +15,7 @@
 
 div{
             /*all div emelemts will have the below styles*/
-            border:1px black;
+            border:3px black;
             margin:10px; /* adds space between border & other elements, all 4 slides*/
             padding:10px; /* adds space between element content & border, all 4 slides*/
         }
@@ -24,16 +24,22 @@ div{
 
         #header {
             /*by id name*/
-            border: 3px solid blue;
+            border: 3px solid black;
 
 
         }
         /* by CLASS*/
         .bg{
-            background-color: black;
-            color:white;
+            border: 3px solid orange;
+            background-color: white;
+            color:black;
         }
 
+       #paragraph {
+        border: 3px solid purple;
+
+
+        }
 
     </style>
 
@@ -42,14 +48,18 @@ div{
 <body>
     <!--WRAPPER - Wraps around all content-->
     <div id="header">
-
+       
 
         <!--Header-->
         <div id="wrapper" class="bg">
             
             <h1> Joseph Mignacca</h1> 
-            <p><b>Hello KT!</b>I play guitar and I have been playing for <u>14 years.</u>I also snowboard, when I was young my parents started me off with <i>skiiing</i>, but when I was 14 I chose to switch to snowboarding.</p>
-
+            
+        </div>
+    <div id="paragraph">
+                
+            <p><b>Hello KT! </b>I play guitar and I have been playing for <u>14 years.</u> I also snowboard, when I was young my parents started me off with <i>skiiing</i>, but when I was 14 I chose to switch to snowbording. Latley I've been getting back into playing hockey. It's been fun but I didnt realize what a physically demanding sport it is!</p>
+    </div>    
 
 </head>
 
