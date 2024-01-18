@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="JMIGNACCA">
+    <meta name="description" content="Week 2 Demo">
+
+    <style>
+        
+        div{
+            /*all div emelemts will have the below styles*/
+            border:1px solid black;
+            margin:10px; /* adds space between border & other elements, all 4 slides*/
+            padding:10px; /* adds space between element content & border, all 4 slides*/
+        } 
+
+        #header {
+        
+            border: 3px solid black;
+
+
+        }
+        .bg{
+            background-color: black;
+            color:white;
+        }
+    </style>
+
+<!--Joseph Mignacca-->
+<!--SE111.01 HTML & Java-->
+<!--1/17/2024-->
+
+</head>
+<body>
+    <!--WRAPPER - Wraps around all content-->
+    <div id="header">
+
+
+        <!--Header-->
+        <div id="wrapper" class="bg">
+            
+            <h1> Joseph Mignacca</h1> <!--only 1 h1 per page - SEO-->
+            
+        </div>
+
+        <!--NAV BAR-->
+        <div id="nav">
+
+
+            <br>
+            <!--internal jump links: jumos to a section bases onb the #id in current page-->
+            <a href="#bio">BIO</a>
+            <a href="#schools">SCHOOLS</a>
+            <a href="#hobbies">HOBBIES</a>
+            
+            <br>
+            <br>
+        <!--BIO-->
+        <div id="bio">
+
+            <h2> My Bio - All about me</h2>
+
+            <p><b>Hello KT! </b>I play guitar and I have been playing for <u>14 years.</u> I also snowboard, when I was young my parents started me off with <i>skiiing</i>, but when I was 14 I chose to switch to snowbording. Latley I've been getting back into playing hockey. It's been fun but I didnt realize what a physically demanding sport it is!</p>
+            <img src="images/Guitars in home office copy.png" alt="Guitars in home office" width="500">
+            <hr>
+            
+        </div>
+
+        <!--SCHOOLING-->
+        <div id="schools">
+
+            <h2> My schooling</h2>
+
+            <!--ordered list-->
+            <ol>
+                <li> Cranston High School West 2015-2018</li>
+                <li> CCRI 2018-2019</li>
+                <li> NEIT 2023 <i>Enrolled</i></li>
+            </ol>
+           
+        </div>
+
+        <!--HOBBIES-->
+        <div id="hobbies">
+            <h2>Hobbies</h2>
+            <!--unordered list-->
+            <ul>
+                <li><em>Hockey</em></li>
+                <li><strong>Guitar</strong></li>
+                <li><i>Fitness</i></li>
+
+            </ul>
+            <img src="images/giphy.gif" alt="Storm's End Castle">
+            <br>
+            <a href="https://www.nhl.com/" target="_blank">Visit NHL Website!</a>
+        </div>
+        
+        <!--FOOTER-->
+        <div id="footer" class="bg" style="text-align: center">
+
+            <a href="#header">Back to TOP</a>
+            <br>
+            <p>&copy; J MIGNACCA |  SE111.02  | 202420</p>
+            
+            <!--include validation screenshot below-->
+
+            <img src="images/valid.png" alt=" Validation Screenshot" width="100%">
+
+        </div>
+
+    </div><!--/Wrapper-->
+
+
+</body>
+</html>
