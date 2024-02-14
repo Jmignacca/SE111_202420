@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="J Mignacca">
+    <meta name="description" content="W6 | Pay Calculator">
+    
+    <title>W6 | Pay Calculator</title>
+
+</head>
+<body>
+    <script>
+        //INPUTS
+        var hourlypay = Number(prompt(`Enter your Hourly pay`))
+        var hoursworkerd = Number(prompt(`Enter how many hours your worked per week`))
+        
+        //Variables
+        var weeks = Number(2)
+        var taxrate = (.2)
+        var gross = hourlypay * hoursworkerd * weeks
+        var unclesam = gross * taxrate
+        var netpay = gross - unclesam
+
+        
+        //OUTPUTS
+        alert(`Gross Pay: $${gross.toFixed(2)} \nUncle Sams Share: $${unclesam.toFixed(2)} \nNetplay: $${netpay.toFixed(2)}`)
+        console.log(`Gross Pay: $${gross.toFixed(2)} \nUncle Sams Share: $${unclesam.toFixed(2)} \nNetplay: $${netpay.toFixed(2)}`)
+
+    </script>
+    
+</body>
+</html>

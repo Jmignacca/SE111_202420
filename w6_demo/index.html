@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="J Mignacca">
+    <meta name="description" content="W6 |Intro to JS Demo">
+    
+    <title>W6 | Intro To JS</title>
+
+    <!--IN DOC STYLING-->
+
+    <style>
+        /*Write CSS in here */
+        body {
+            background-color: grey;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <!--best preactice to have some kind of HTML in your body<body>-->
+    <h1>W6 | Intro to JavaScript Demo</h1>
+
+    <!--use <script> AFTER content, @ end of <body> but before close-->
+
+    <script>
+        //in here we write JS
+        //this is a single line comment
+        
+        /*
+            and this is a multiline comment
+        */
+       
+        //we must DECLARE variables before we can define an use them
+        var name        //declaration
+        name = "Joey"   //definition - assigning data to the name
+
+        //combine the instructions
+        var new_name = "JoeyM"
+
+        var num1 = 10
+        var num2 = 7
+        var sum = num1 + num2
+
+        //OUTPUT-----------------------------
+        //consol.log() -> output for TESTING/DEVELOPMENT.DEBUGGING - NOT for USER
+        console.log(name)       //one stored value
+        console.log(name, new_name)       //two stored values
+        //LITERAL STRINGs use `` and allow for stored value inclusion
+        console.log(`1st NAME: ${name} \n2nd NAME: ${new_name}`) //message + stored
+
+        //alert() -> creates a pop-up; user must interact with (press OK) before next line of script is read
+        alert(`${sum} = ${num1} + ${num2}`)
+        console.log(`${sum} = ${num1} + ${num2}`)
+
+        //displays number rounded to the 2nd decimal place
+        alert(`SUM TOTAL: $${sum.toFixed(2)}`)      
+        //this method can only be applied to number objects
+        //objects is what comes before . -> sum
+
+        //INPUT--------------------------
+        //prompt() -> creates a pop-up window which includes a text field for use to enter date
+        //user must click OK before prompt() will close / any new lines are processed
+
+        var last = prompt(`Hi ${name}! Enter your last name`)
+
+        console.log(`passed the prompt()`)
+        console.log(`Last Name: ${last}`)
+
+        //gaining Numbers from the user - cast as a number!
+        var num = Number(prompt(`Enter a Number: `))
+
+        var multi = num * 10
+
+        console.log(num)              //looks like a number??
+        console.log(num.toFixed(2))   //but is it a number?
+
+    </script>
+    
+
+</body>
+</html>
