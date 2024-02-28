@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="- Joseph Mignacca -">
+    <meta name="description" content="W8 Demo - JS Arrays & Objects!">
+
+    <title>W8 | JS Arrays & Objects</title>
+
+    <!--IN DOCUMENT STYLING-->
+    <style>
+        /*write CSS in here!*/
+
+        /*selecting an element by TAG TYPE*/
+        /*in CSS, this makes ALL elements of the type styled*/
+        body {
+            background-color:grey;
+        }
+
+        table {
+            border:1px solid white;
+            width:450px;
+            margin:auto;
+            text-align:left;
+        }
+
+
+        /*selecting an element by #ID*/
+        /*in CSS, this makes ONLY THE ELEMENT with the ID styled*/
+
+        #wrapper {
+            width:500px;
+            background-color:darkslategray;
+            color:white;
+            font-family:Helvetica, sans-serif;
+            margin:auto;
+            padding:10px;
+            box-shadow: 0 0 8px black;
+            text-align:center;
+        }
+
+        #content {
+            border:1px solid lightslategrey;
+            padding:10px;
+            margin:20px 10px;
+
+        }
+
+        
+
+        #footer {
+            font-size: 10px;
+        }
+
+        /*selecting an element by .CLASS*/
+        /*in CSS, this makes ALL elements of the CLASS NAME styled*/
+        .button {
+            width:200px;
+            height:50px;
+            background-color:lightslategray;
+            color:darkslategrey;
+            line-height:50px;
+            text-align:center;
+            margin:auto;
+            margin-top:25px;
+            display:block;
+            border:1px solid white;
+        }
+
+        .button:hover {
+            background-color:white;
+        }
+    </style>
+</head>
+<body>
+
+    <!--#wrapper for main HTML content-->
+    <div id="wrapper">
+
+        <!-- for game title-->
+        <div id="header">
+            <h1>Arrays & Objects in JS</h1>
+            <h3>A practice in W8 Javascript Topics</h3>
+            <p><i>Add information to the form below and then click SUBMIT without refreshing the page!</i>
+        </div>
+
+        <!--nav for extra game stuff-->
+        <div id="nav">
+
+        </div>
+
+        <!--main content for game-->
+        <!--THIS PAGE: form for player name-->
+        <div id="content">
+            <!--build a form with a table for the user to fill out-->
+            <!--the form submit button will have an event listener added to it in JS-->
+            <form id="myForm">
+
+                <table>
+
+                    <tbody>
+                        <!--player name-->
+                        <tr>
+                            <td>
+                                <label for="player">Player Name:</label>
+                            </td>
+                            <td>
+                                <input type="text" name="player" id="player" maxlength="25" placeholder="Jane Doe" >
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="p-class">Player Class:</label>
+                            </td>
+                            <td>
+                                <input type="text" name="p-class" id="p-class" maxlength="25" placeholder="Warlock" >
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="p-lvl">Player Level:</label>
+                            </td>
+                            <td>
+                                <input type="number" name="p-lvl" id="p-lvl" min="1" max="25" placeholder="3" >
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                              
+                            </td>
+                            <td>
+                                <input type="submit" id="submit" value="SUBMIT:]" >
+                            </td>
+
+
+                    </tbody>
+                </table>
+            </form>
+
+
+
+
+            <!--once the player has filled out their form, we need to display the results back to them within the page-->
+            <div id="resultBox">
+
+            </div><!--/ #resultBox-->
+
+        </div><!--/ #content-->
+
+        <!--footer for final notes of game site-->
+        <div id="footer">
+
+            <p>&copy; -YOUR NAME GOES HERE- | SE111 | 202420</p>
+            <h6><a href="../../index.html">KT's Repo Index</a></h6> <!--keep this KT's repo link ;] yours goes in the #nav aread-->
+
+            <!--screeshot of validation below-->
+            <!--nesting an image inside of an anchor element makes the image the link!-->
+            <!--
+                
+                <a href="images/_____"><img src="images/___" alt="screenshot of validation for page" style="width:50%"></a>
+            -->
+
+        </div><!--/ #footer-->
+
+    </div>
+
+    <!--SCRIPT TAGS usually BELONG @ END of BODY ELEMENT (after HTML content)-->
+    <!--IN DOCUMENT JAVASCRIPT BELONGS BELOW-->
+    <script>
+        //write JS in here; loads after HTML content, so all HTML content is available! needed to gain access to form values without query string
+
+
+        //[PART 1]-WEEK 7 REVIEW---JS HTML ELEMENT SELECTION-----------------------------
+        //selection: select by a TAG NAME or #ID
+        //below are HTML elemenet objects that will now be stored in our <script>
+        var header = document.querySelector(`#header`)
+
+        var pName = document.getElementById(`player`)
+        var pClass = document.getElementById(`p-class`)
+        var pLevel = document.getElementById(`p-lvl`)
+        
+        var submit = document.getElementById(`submit`)
+
+        var resultBox =  document.getElementById(`resultBox`)
+        //above are all GLOBAL names and both name and value(s) assigned are accessible anywhere in out <script> once declared
+        
+        //all of these names now represent OBJECTS - we can access their .properties (attributes) by using dot syntax
+        console.log(`The header's ID is: # ${header.id}`)
+        header.style.backgroundColor = `#999999`
+
+        //adding event listeners: JS requieres the an event to occur in order for most functions to "run" - this requires adding an event type listener to elements
+
+        //below prevents refresh of the page when submit button is clicked
+        var form = document.getElementById(`myForm`)
+        function handleForm(event) {event.preventDefault() }
+        form.addEventListener(`submit`, handleForm)
+
+        //below creates the event listener to run the basicInfo function, which runs whn the submit button is clicked
+
+/*        
+        submit.addEventListener(`click`, basicInfo)
+
+        //build a function for the evenet you just created
+        //event based functions require the evnet parameter (event/evnt/ev/e)
+        function basicInfo(e)
+        {
+            //global names + values are accessible everywhere!
+            console.log(pName)
+
+            //access the pNamme's value
+            console.log(pName.value)
+
+            //write the player's name to the result box using name w/ global object notation
+            resultBox.innerHTML = `<h6>${pName.value}</h6> `
+        }//basicInfo() Close
+*/
+
+        //[PART 2]-INTRO TO JS ARRAYS & OBJECTS-------------------------------------------------------------------------
+        //-------ARRAYS--------------------
+        //-------create a new array of names and populate it!
+        
+        var people = [
+            "Katie",
+            "Marty",
+            "Sal",
+            "Jay",
+            "Jordan",
+        ]
+
+        //using the array name by itself descripes the WHOLE SER of values
+        console.log(people)      // shows entire array structure (objects)
+        console.log(`${people}`) // only shows values stores
+        //Array name + KEY ___ describes ONE VALUE
+        console.log(`${people[2]}`)
+
+        //everything in JS is an OBJECT! so arrays take on array properties whenever built, like the .length - # stores to the array
+        console.log(`The 'people' array had ${people.length} values stored to it`)
+        //----------ADDING VALUES TO ARRAYS--------
+
+        //add a name to the array - requires knowing next avaliable index umber
+        people[5] = "Tim"
+        
+        //add a name to the array - base on length, whihch reps next avaliable index #
+        people[people.length] = "Scott"
+
+        //add a name to the array -using the .push() avaliable to array typed
+        people.push("Jim")      //.append() in Python
+
+        
+
+        people.push(prompt("Enter a name for the array"))
+        console.log(`Now the 'people' array has ${people.length} values.`)
+
+
+
+        //-------PARALLEL ARRAYS-----------
+        
+        var faveAnimals = [
+            "elephant",     //this is th [0] value meaning it belongs people[0]
+            "dog",
+            "birds",
+            "jaguar",
+            "panda bear",   // this is the [4] value it peoples to people[4]
+            "meerkat",
+            "giraffe",
+            "duck"
+            
+        ]
+
+        //-----PROCESSING ARRAYS - use a standard for loop to batch process standard array (do the same thing to every value in the array)
+
+        //standard for loop - best used for standard arrays - array with int index
+
+        for (let index = 0; index < people.length; index++)
+        {
+            //BLOCK SCOPE : uses the last declarative; the cariable/name is only accessible within the {code block}
+
+            //index++ - post-incrementation, adds+1 to index after each loop iteration
+
+            //show the parallel nature of the arrays - display each name value with its corresponding favorite animal
+            console.log(`${people[index]}'s fave animal is a(n): ${faveAnimals[index]}`)
+
+        }//standard array for loop processing close - showing parrallel arrays
+
+
+        //-------ASSOCIATIVE ARRAYS---------
+        //arrays with string index instead of integer index
+        var classTimes = []
+
+        //developer must hand populate each string index with a unique string key
+        classTimes["early"] = "7:45A"
+        classTimes["better"] = "11:25A"
+        classTimes["afternoon"] = "3:05P"
+        classTimes["evening"] = "5:45p"
+
+        //for in loops are best used for associative array and other string based keys, like properties in objects
+        for(let key in classTimes)
+        {
+            //"for every key in the classTimes array"
+            
+            //display each value stored at each key in the array, with its key as a label
+            console.log(`Class Times: ${key}: ${classTimes[key]}`)
+        }
+    
+
+        //-------OBJECTS--------------------
+
+        //create a pet1object that will be reusable to create a second object - we can do this because properties are reusable
+        var pet1 = {
+            title: "Sir Captain",
+            first: "Jackson 'Jack' Daniel",
+            middle: "Mello",
+            last: "Truchon",
+            suffix: ", Fisrt of his name",
+            age: 13,
+            hasSiblings: true,
+            numSiblings: 2,
+            nameSiblings: ["George", "Marlowe"],
+
+            //below is a function stored to an object ie METHOD build :]
+            // the method can be called by first stating the object, and then the property name
+            infoAlert: function(){
+
+                alert(`
+                Pet1 ${this.title} ${this.first} ${this.middle} ${this.last} ${this.suffix} !
+                
+                `)
+            }   
+            // "this" keyword refrences the object you are assigning data to
+
+        }
+
+        //access the entire object - using name shows you all object data
+        console.log(pet1)
+
+        //access a value of the object - use objectName.property where the value(s) is/are assigned
+        console.log(pet1.first)
+        //show pet1's first sibling
+        console.log(pet1.nameSiblings[0])
+        //show how many siblings pet1 has using the nameSiblin property
+        console.log(pet1.nameSiblings.length)
+        
+        var pet2 = {
+            title: "Mr",
+            first: "George",
+            middle: "Bulleit",
+            last: "Wayne",
+            suffix: ", The most average boy",
+            age: 9,
+            hasSiblings: true,
+            numSiblings: 3,
+            nameSiblings: ["George", "Marlowe", "Stevie"],
+            bandName: "George and the Goblin Girls",
+            //below is a function stored to an object ie METHOD build :]
+            // the method can be called by first stating the object, and then the property name
+            infoAlert: function(){
+
+                alert(`
+                Pet1 ${this.title} ${this.first} ${this.middle} ${this.last} ${this.suffix} !
+
+                 `)
+            }   
+
+            // "this" keyword refrences the object you are assigning data to
+
+        }
+        
+        //-------ARRAYS POPULATED WITH OBJECTS----------
+        var pets = []
+
+        // add objects to the array
+        pets.push(pet1)
+        pets.push(pet2)
+
+        //you can also push both at once! pet1 will be first [0]
+        //pets.oush(pet1, pet2)
+
+
+
+
+        //[PART 3]-PUTTING IT ALL TOGETHER--------------------------
+        // add event listener to the submit button
+        submit.addEventListener(`click`, writeCharacter)
+
+        //create an empty array to hold char info - it must be made before the function whihc populates the array (this is so the name is GLOBAL and tracks new adds to the array)
+        var charInfo = []
+
+        function writeCharacter(e)
+        {
+            //get values from the form element objects and assign them to local vars
+            //LOCAL SCOPE: names declared inside of the function are only accessible by that function
+            var player = pName.value
+            var playClass = pClass.value
+            var playLevel = Number(pLevel.value)
+
+            //for funs
+            if (playLevel >= 5)
+            {
+                var bonus = "+500 GOLD!"
+            }
+            else
+            {
+                var bonus = "No bonus yet lil man"
+            }
+
+            // build an object with the new values stores to properties
+            //could alos do this using the global names with ___.property
+            var newPlayer = {
+                playerName: player,
+                playerClass: playClass,
+                playerLevel: playLevel,
+                bonus: bonus
+
+
+            }
+            console.log(newPlayer) //test
+            //ADD THE OBJECT TO THE ARRAY
+            charInfo.push(newPlayer)
+            console.log(charInfo) //test
+
+            //write the charINFO array and all objects to the HTML page
+            //every time the button can be rebuilt with entire array before being written to the resultBox
+            var resultContent = ""
+
+            //write the array of objects to the resultBox HTML element
+            //since the array (data structure) is populated with objects (date structure) we need LOOPCEPTOIN a loop in a loop
+            for (let i = 0; i < charInfo.length; i++)
+            {
+                //we use a standard array to move through each value in the array
+                
+                //each value is an object, so we then loop through each key to access the properties
+                for (let key in charInfo[i])
+                {
+                    //for everyproperty of the current object
+                    //charInfo[i] --> an object within the array
+                    resultContent += `<p><b>${key.toUpperCase()}: </b> ${charInfo[i][key]}</p>`
+                }
+                //below adds an <hr> after each new char is written to the page
+                resultContent += `<hr>`
+            }
+
+            //after the main for ;oop has added all current array and object data to the resultContent, reaaign resultBox.innerHTML to the result.Content value
+            resultBox.innerHTML = resultContent
+
+
+        }//writeCharacter() CLOSE
+
+    </script>
+
+</body>
+</html>

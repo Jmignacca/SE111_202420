@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--FILL OUT THE MISSING INFO-->
-    <meta name="author" content="">
-    <meta name="description" content="">
+    <meta name="author" content="Joseph Mignacca">
+    <meta name="description" content="W7 | Pay Calculator">
 
     <title>W7 | JS Pay Form</title>
 </head>
@@ -108,20 +108,33 @@
         //PART1-----selecting and storing HTML elements------------
         /*
             declare names for each of the following elements in the document: body, h1, input, div, input buttons
-
+        
             use EITHER .querySelector() OR .getElementById
 
             console.log() all of these elements once complete
 
         */
 
+        var body = document.querySelector(`body`)
+        var h1 = document.querySelector('h1')
+        var first = document.querySelector('#first')
+        var last = document.querySelector('#last')
+        var rate = document.querySelector(`#rate`)
+        var hours = document.querySelector(`#hours`)
+        var div = document.querySelector('div')
+
+        console.log(body)
+
+        
         //PART2------adding event listeners------------------------
         /*
             add an event listener to the #enter-button that runs a function called "formData"
-
+        
             add an event listener to the #confirm-button that runs a function called "confirmForm"
         */
+        document.querySelector(`#enter-button`).addEventListener(`click`, formData)
 
+        document.querySelector(`#confirm-button`).addEventListener(`click`, confirmData)
 
         //PART3------building event functions----------------------
         /*
@@ -132,7 +145,7 @@
                 -console.log() the 4 values: fullName, grossPay, taxAmount, netPay
                 -write the information, with bolded labels in paragraph elements, to the #info div's innerHTML
                 -ensure all monetary values are displayed to the second decimal place (.toFixed(2))
-
+       
                     HINT EX: `<p><b>Full Name:</b> ${fullName}`
 
                 REMEMBER: form text field data is treated as a STRING so you will most likely need the Number() 
@@ -147,18 +160,99 @@
                 
 
         */
+        var first = document.getElementById(`first`)
+        var last = document.getElementById(`last`)
+        var fullName = document.getElementById(`first` + `last`)
+        var rate = document.getElementById(`rate`)
+        var hours = document.getElementById(`hours`)
+        var gross = rate * hours
+        var taxRate = Number(.2)
+        var taxAmount = gross * taxRate
+        var netPay = gross - taxRate
+
+        var info = document.getElementById(`info`)
+
+
        function formData(event)
        {
-            //EXTRA CREDIT---------+5pts-------------------------------
-            /*
-                Once your file is working, add ONE INSTRUCTION above this comment, but inside of the formData(), that makes sure if the user resubmits the form without reloading the page, only the new form info is displayed
-            */
+        info.innerHTML = ``
 
-       }//formData()
+        var fvalue = first.value    //local declaration
+        console.log(`#first value: ${fvalue}`)
 
+        var lvalue = last.value 
+        console.log(`#last value: ${lvalue}`)
+
+        var fullName = fvalue + ` ` + lvalue
+        console.log(`#full name: ${fullName}`)
+
+
+        var rValue = Number(rate.value)
+        var hValue = Number(hours.value)
+       
+        var gpValue = rValue * hValue
+        console.log(`#gross pay: ${gpValue}`)
+
+        var tValue = Number(.2)
+        var tAmount = tValue * gpValue 
+        console.log(`#tax amount: ${tAmount}`)
+
+        var npValue = gpValue - tAmount
+        console.log(`#Net Pay: ${npValue}`)
+
+
+        info.innerHTML += `<p><b>Name:</b>&nbsp;${fullName}</p>`
+        info.innerHTML += `<p><b>Gross Pay:</b>&nbsp; $${gpValue.toFixed(2)}</p>`
+        info.innerHTML += `<p><b>Tax Amount: </b>&nbsp;$${tAmount.toFixed(2)}</p>`
+        info.innerHTML += `<p><b>Net Pay: </b>&nbsp;$${npValue.toFixed(2)}</p>`
+
+       }
+        
 
        function confirmData(event)
        {
+        var first = document.getElementById(`first`)
+        var last = document.getElementById(`last`)
+        var fullName = document.getElementById(`first` + `last`)
+        var rate = document.getElementById(`rate`)
+        var hours = document.getElementById(`hours`)
+        var gross = rate * hours
+        var taxRate = Number(.2)
+        var taxAmount = gross * taxRate
+        var netPay = gross - taxRate
+
+        info.innerHTML = ``
+
+        var fvalue = first.value    //local declaration
+        console.log(`#first value: ${fvalue}`)
+
+        var lvalue = last.value 
+        console.log(`#last value: ${lvalue}`)
+
+        var fullName = fvalue + ` ` + lvalue
+        console.log(`#full name: ${fullName}`)
+
+
+        var rValue = Number(rate.value)
+        var hValue = Number(hours.value)
+
+        var gpValue = rValue * hValue
+        console.log(`#gross pay: ${gpValue}`)
+
+        var tValue = Number(.2)
+        var tAmount = tValue * gpValue 
+        console.log(`#tax amount: ${tAmount}`)
+
+        var npValue = gpValue - tAmount
+        console.log(`#Net Pay: ${npValue}`)
+
+
+        info.innerHTML += `<p><b>Name:</b>&nbsp;${fullName}</p>`
+        info.innerHTML += `<p><b>Gross Pay:</b>&nbsp; $${gpValue.toFixed(2)}</p>`
+        info.innerHTML += `<p><b>Tax Amount: </b>&nbsp;$${tAmount.toFixed(2)}</p>`
+        info.innerHTML += `<p><b>Net Pay: </b>&nbsp;$${npValue.toFixed(2)}</p>`
+
+        alert(`${fullName}\nGross Pay: $${gpValue.toFixed(2)}\nTax Amount: $${tAmount.toFixed(2)}\nNet Pay: $${npValue.toFixed(2)}`)
 
        }//confirmData()
 
