@@ -24,7 +24,7 @@
 
     <h1>Week 9 Demo & Creating Elements in JS</h1>
     <h3><i>Using the .createElement() & .appendChild() methods</i></h3>
-
+    
     <script>
         /*WEEK 9 JAVASCRIPT NOTES!
 
@@ -49,6 +49,45 @@
             {first:"Yara", last:"Greyjoy", credit:"Queen of the Iron Islands and Lady Reaper of Pyke" }
 
             ]
+
+            console.log(people)         //entire array - all values at once
+            console.log(people[0])      //one value in the array - ONE OBJECT
+            console.log(people[0].last) //one specific value of the object in the array
+
+            var body = document.querySelector(`body`)
+
+            console.log(body)
+            console.dir(body)       //view as an object - see its properties
+
+            console.log(body.children[1])
+            console.log(body.parentElement)
+
+            //standard arrays use standard for loops
+            for (let i = 0; i <people.length; i++)
+            {
+                //for every value (object) in the array
+
+                //create the element to hold content first; assign it attributes
+                var tempDiv = document.createElement(`div`)
+                tempDiv.setAttribute(`id`, people[i].first)
+                tempDiv.setAttribute(`class`, `red`)
+
+                //for every property in the current object (people[i]) create a <p> and populate it with the property value as text content
+                for (let key in people[i])
+                {
+                    //for every property in the object
+                    var p = document.createElement(`p`)
+                    var text = document.createTextNode(people[i][key])
+
+                    p.appendChild(text)
+                    tempDiv.appendChild(p)
+                }
+
+                //add the tempDiv to the end of the body elements content
+                body.appendChild(tempDiv)
+            }
+
+
     </script>
     
 </body>
